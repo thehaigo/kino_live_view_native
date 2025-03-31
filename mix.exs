@@ -34,10 +34,10 @@ defmodule Server.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.7.12"},
-      {:phoenix_html, "~> 4.0"},
+      {:phoenix, "~> 1.7.20"},
+      {:phoenix_html, "~> 4.1"},
       {:phoenix_live_reload, "~> 1.2"},
-      {:phoenix_live_view, "~> 0.20.2"},
+      {:phoenix_live_view, "~> 1.0.0"},
       {:floki, ">= 0.30.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.8.3"},
       {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
@@ -51,17 +51,17 @@ defmodule Server.MixProject do
        depth: 1},
       {:telemetry_metrics, "~> 1.0"},
       {:telemetry_poller, "~> 1.0"},
-      {:gettext, "~> 0.20"},
+      {:gettext, "~> 0.26"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.2"},
-      {:live_view_native, "0.3.0-rc.4"},
-      {:live_view_native_swiftui, "0.3.0-rc.4"},
-      {:live_view_native_stylesheet, "0.3.0-rc.4"},
-      {:live_view_native_live_form, "0.3.0-rc.3"},
-      {:earmark_parser, "~> 1.4.0"},
-      {:kino, "~> 0.12.3"},
-      {:qr_code, "~> 3.0.0"}
+      {:bandit, "~> 1.5"},
+      {:live_view_native, "~> 0.4.0-rc.1"},
+      {:live_view_native_stylesheet, "~> 0.4.0-rc.1"},
+      {:live_view_native_swiftui, "~> 0.4.0-rc.0"},
+      {:live_view_native_live_form, "~> 0.4.0-rc.1"},
+      {:earmark_parser, "~> 1.4.44"},
+      {:kino, "~> 0.15.3"},
+      {:qr_code, "~> 3.2.0"}
     ]
   end
 

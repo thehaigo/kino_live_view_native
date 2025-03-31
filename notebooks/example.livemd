@@ -95,6 +95,7 @@ require Server.Livebook
 import Server.Livebook
 import Kernel, except: [defmodule: 2]
 
+
 defmodule ServerWeb.ExampleLive.SwiftUI do
   use ServerNative, [:render_component, format: :swiftui]
 
@@ -110,21 +111,22 @@ defmodule ServerWeb.ExampleLive do
   use ServerNative, :live_view
 
   @impl true
-  def render(assigns),
-    do: ~H"""
-    <p phx-click="clicked">Hello, world!</p>
-    """
+  def render(assigns), do: ~H"""
+  <p phx-click="clicked">Hello, world!</p>
+  """
 
   def handle_event("clicked", _params, socket) do
     IO.inspect("CLICKED")
     {:noreply, socket}
   end
 end
+
 |> Server.SmartCells.LiveViewNative.register("/")
 
 import Server.Livebook, only: []
 import Kernel
 :ok
+
 ```
 
 ## Render Components
@@ -138,6 +140,7 @@ require Server.Livebook
 import Server.Livebook
 import Kernel, except: [defmodule: 2]
 
+
 defmodule ServerWeb.ExampleLive.SwiftUI do
   use ServerNative, [:render_component, format: :swiftui]
 
@@ -147,11 +150,13 @@ defmodule ServerWeb.ExampleLive.SwiftUI do
     """
   end
 end
+
 |> Server.SmartCells.RenderComponent.register()
 
 import Server.Livebook, only: []
 import Kernel
 :ok
+
 ```
 
 ## Live Reloading
@@ -167,6 +172,7 @@ require Server.Livebook
 import Server.Livebook
 import Kernel, except: [defmodule: 2]
 
+
 defmodule ServerWeb.HomeLive.SwiftUI do
   use LiveViewNative.Component,
     format: :swiftui
@@ -180,7 +186,6 @@ end
 
 defmodule ServerWeb.HomeLive do
   use ServerWeb, :live_view
-
   use LiveViewNative.LiveView,
     formats: [:swiftui],
     layouts: [
@@ -194,11 +199,13 @@ defmodule ServerWeb.HomeLive do
     """
   end
 end
+
 |> Server.SmartCells.LiveViewNative.register("/")
 
 import Server.Livebook, only: []
 import Kernel
 :ok
+
 ```
 
 ## Asset Paths
@@ -211,6 +218,7 @@ Asset paths are relative to the host URL. We have provided an example image at h
 require Server.Livebook
 import Server.Livebook
 import Kernel, except: [defmodule: 2]
+
 
 defmodule ServerWeb.HomeLive.SwiftUI do
   use LiveViewNative.Component,
@@ -225,7 +233,6 @@ end
 
 defmodule ServerWeb.HomeLive do
   use ServerWeb, :live_view
-
   use LiveViewNative.LiveView,
     formats: [:swiftui],
     layouts: [
@@ -239,11 +246,13 @@ defmodule ServerWeb.HomeLive do
     """
   end
 end
+
 |> Server.SmartCells.LiveViewNative.register("/")
 
 import Server.Livebook, only: []
 import Kernel
 :ok
+
 ```
 
 ## Core Components
@@ -257,6 +266,7 @@ require Server.Livebook
 import Server.Livebook
 import Kernel, except: [defmodule: 2]
 
+
 defmodule ServerWeb.ExampleLive do
   use ServerWeb, :live_view
 
@@ -266,11 +276,13 @@ defmodule ServerWeb.ExampleLive do
     """
   end
 end
+
 |> Server.SmartCells.LiveViewNative.register("/")
 
 import Server.Livebook, only: []
 import Kernel
 :ok
+
 ```
 
 ## Utility Styles
@@ -285,6 +297,7 @@ Below, we define the `background(.blue)` style.
 require Server.Livebook
 import Server.Livebook
 import Kernel, except: [defmodule: 2]
+
 
 defmodule ServerWeb.ExampleLive.SwiftUI do
   use ServerNative, [:render_component, format: :swiftui]
@@ -303,11 +316,13 @@ defmodule ServerWeb.ExampleLive do
   @impl true
   def render(assigns), do: ~H""
 end
+
 |> Server.SmartCells.LiveViewNative.register("/")
 
 import Server.Livebook, only: []
 import Kernel
 :ok
+
 ```
 
 We can use the following debug function to test if a style exists.
@@ -327,6 +342,7 @@ require Server.Livebook
 import Server.Livebook
 import Kernel, except: [defmodule: 2]
 
+
 defmodule ServerWeb.ExampleLive.SwiftUI do
   use ServerNative, [:render_component, format: :swiftui]
 
@@ -344,11 +360,13 @@ defmodule ServerWeb.ExampleLive do
   @impl true
   def render(assigns), do: ~H""
 end
+
 |> Server.SmartCells.LiveViewNative.register("/")
 
 import Server.Livebook, only: []
 import Kernel
 :ok
+
 ```
 
 To use double quotes within a style, you must wrap the value for the style attribute in curly brackets. Otherwise, you will experience parser issues.
@@ -364,10 +382,11 @@ require Server.Livebook
 import Server.Livebook
 import Kernel, except: [defmodule: 2]
 
+
 defmodule ServerWeb.ExampleLive.SwiftUI do
   use ServerNative, [:render_component, format: :swiftui]
   import ServerWeb.CoreComponents.SwiftUI
-
+  
   def render(assigns) do
     ~LVN"""
     <.simple_form for={@form} id="form" phx-submit="submit">
@@ -387,17 +406,16 @@ defmodule ServerWeb.ExampleLive do
   use ServerNative, :live_view
 
   @impl true
-  def render(assigns),
-    do: ~H"""
-    <.simple_form for={@form} id="reset_password_form" phx-submit="submit">
-      <.input field={@form[:email]} placeholder="Email" />
-      <:actions>
-        <.button type="submit">
-          Send password reset instructions
-        </.button>
-      </:actions>
-    </.simple_form>
-    """
+  def render(assigns), do: ~H"""
+  <.simple_form for={@form} id="reset_password_form" phx-submit="submit">
+    <.input field={@form[:email]} placeholder="Email" />
+    <:actions>
+      <.button type="submit">
+        Send password reset instructions
+      </.button>
+    </:actions>
+  </.simple_form>
+  """
 
   @impl true
   def mount(_params, _session, socket) do
@@ -410,11 +428,13 @@ defmodule ServerWeb.ExampleLive do
     {:noreply, socket}
   end
 end
+
 |> Server.SmartCells.LiveViewNative.register("/")
 
 import Server.Livebook, only: []
 import Kernel
 :ok
+
 ```
 
 ## Tailwind
@@ -430,6 +450,7 @@ require Server.Livebook
 import Server.Livebook
 import Kernel, except: [defmodule: 2]
 
+
 defmodule ServerWeb.ExampleLive do
   use ServerWeb, :live_view
 
@@ -439,9 +460,11 @@ defmodule ServerWeb.ExampleLive do
     """
   end
 end
+
 |> Server.SmartCells.LiveViewNative.register("/")
 
 import Server.Livebook, only: []
 import Kernel
 :ok
+
 ```

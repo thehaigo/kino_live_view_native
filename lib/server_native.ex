@@ -39,7 +39,8 @@ defmodule ServerNative do
         ],
         layouts: [
           swiftui: {ServerWeb.Layouts.SwiftUI, :app}
-        ]
+        ],
+        dispatch_to: &Module.concat/2
 
       unquote(verified_routes())
     end
@@ -113,7 +114,7 @@ defmodule ServerNative do
     quote do
       use LiveViewNative.Component, unquote(opts)
 
-      import LiveViewNative.Component, only: [csrf_token: 1]
+      import LiveViewNative.Component, only: [csrf_token: 2]
 
       unquote(helpers(opts[:format]))
     end
@@ -121,7 +122,7 @@ defmodule ServerNative do
 
   defp helpers(format) do
     gettext_quoted = quote do
-      use Gettext, backend: ServerWeb.Gettext
+      import ServerWeb.Gettext
     end
 
     plugin = LiveViewNative.fetch_plugin!(format)
