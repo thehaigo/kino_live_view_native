@@ -52,20 +52,23 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 config :phoenix_template, :format_encoders, [
-  swiftui: Phoenix.HTML.Engine
+  swiftui: Phoenix.HTML.Engine,
+  flutter: Phoenix.HTML.Engine,
 ]
 
 config :mime, :types, %{
   "text/styles" => ["styles"],
-  "text/swiftui" => ["swiftui"]
+  "text/swiftui" => ["swiftui"],
+  "text/flutter" => ["flutter"]
 }
 
 config :live_view_native, plugins: [
-  LiveViewNative.SwiftUI
+  LiveViewNative.SwiftUI,
+  LiveViewNative.Flutter,
 ]
 
 config :phoenix, :template_engines, [
-  neex: LiveViewNative.Engine
+  neex: LiveViewNative.Template.Engine
 ]
 
 config :live_view_native_stylesheet,
@@ -73,7 +76,12 @@ config :live_view_native_stylesheet,
     swiftui: [
       "lib/**/swiftui/*",
       "lib/**/*swiftui*"
-    ]
+    ],
+    flutter: [
+      "lib/**/flutter/*",
+      "lib/**/*flutter*"
+    ],
+
   ],
   output: "priv/static/assets"
 

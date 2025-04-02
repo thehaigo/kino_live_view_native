@@ -4,13 +4,15 @@ defmodule ServerWeb.Router do
   pipeline :browser do
     plug :accepts, [
       "html",
-      "swiftui"
+      "swiftui",
+      "flutter",
     ]
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout,
       html: {ServerWeb.Layouts, :root},
-      swiftui: {ServerWeb.Layouts.SwiftUI, :root}
+      swiftui: {ServerWeb.Layouts.SwiftUI, :root},
+      flutter: {ServerWeb.Layouts.Flutter, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end

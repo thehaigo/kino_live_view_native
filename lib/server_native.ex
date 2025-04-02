@@ -35,10 +35,12 @@ defmodule ServerNative do
     quote do
       use LiveViewNative.LiveView,
         formats: [
-          :swiftui
+          :swiftui,
+          :flutter
         ],
         layouts: [
-          swiftui: {ServerWeb.Layouts.SwiftUI, :app}
+          swiftui: {ServerWeb.Layouts.SwiftUI, :app},
+          flutter: {ServerWeb.Layouts.Flutter, :app}
         ],
         dispatch_to: &Module.concat/2
 

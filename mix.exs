@@ -61,7 +61,10 @@ defmodule Server.MixProject do
       {:live_view_native_live_form, "~> 0.4.0-rc.1"},
       {:earmark_parser, "~> 1.4.44"},
       {:kino, "~> 0.15.3"},
-      {:qr_code, "~> 3.2.0"}
+      {:qr_code, "~> 3.2.0"},
+      {:live_view_native_flutter,
+      github: "alex-min/live_view_native_flutter",
+      ref: "2328cb7566da5e35e01333e86c615f770ce3ddcc"}
     ]
   end
 
